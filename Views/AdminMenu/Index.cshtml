@@ -1,0 +1,41 @@
+﻿@model List<Dish>//what will be shown in the view
+
+
+
+<div class="row">
+    @foreach (var dish in Model)
+    {
+        <div class="col-md-3">
+            <div class="card">
+                <img src="~/Images/@dish.ImageUrl" class="card-img-top" alt="@dish.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@dish.Name</h5>
+                    <p class="card-text">@dish.Description</p>
+                    <p class="card-text">@dish.Price SEK</p>
+
+                    <a asp-controller="AdminMenu" asp-action="Edit" asp-route-id=@dish.DishId class="btn btn-outline-info">Edit</a>
+
+                    <form method="post" asp-action="Delete" asp-controller="AdminMenu" style="display:inline;">
+                        <input type="hidden" name="id" value="@dish.DishId" />
+                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Do you want to delete this dish?');">Delete</button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    }
+</div>
+<div class="create-btn">
+    <a asp-action="Create" asp-controller="AdminMenu" class="btn btn-outline-success btn-lg">Create</a>
+</div> 
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}

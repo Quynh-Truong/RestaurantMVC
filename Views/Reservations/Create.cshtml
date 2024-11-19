@@ -1,0 +1,62 @@
+﻿@* @model List<Reservation>//show list of existing reservations in View
+ *@
+@* <div class="create-btn">
+    <a asp-controller="Reservations" asp-action="Create" class="btn btn-outline-success btn-lg">Boka ett bord</a>
+</div>
+ *@
+ @model Reservation
+@* this data is sent to Create *@
+
+<h1>Make a Reservation</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="FirstName">First Name</label>
+        <input asp-for="FirstName" placeholder="First Name" aria-label="First Name" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName">Last Name</label>
+        <input asp-for="LastName" placeholder="Last Name" aria-label="Last Name" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNo">Phone Number</label>
+        <input asp-for="PhoneNo" placeholder="000-0000000" aria-label="Phone Number" class="form-control" />
+        <span asp-validation-for="PhoneNo" class="text-danger"></span>
+    </div>
+    @*     <div class="form-group">
+    <label asp-for="TableId">Table ID</label>
+    <input asp-for="TableId" class="form-control" />
+    <span asp-validation-for="TableId" class="text-danger"></span>
+    </div> *@
+    <div class="form-group">
+        <label asp-for="ReservationStart">Reservation Start Time</label>
+        <input asp-for="ReservationStart" placeholder="Reservation Time" aria-label="Chosen time for reservation" class="form-control" type="datetime-local" />
+        <span asp-validation-for="ReservationStart" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NoOfPeople">Number of People</label>
+        <select asp-for="NoOfPeople" class="form-select" aria-label="Number of people for reservation">
+            @*         <input asp-for=NoOfPeople input class="form-select" />*@
+            <option value="" disabled selected>Select number of people</option>
+            <option value="1" aria-label="One">1</option>
+            <option value="2" aria-label="Two">2</option>
+            <option value="3" aria-label="Three">3</option>
+            <option value="4" aria-label="Four">4</option>
+            <option value="5" aria-label="Five">5</option>
+            <option value="6" aria-label="Six">6</option>
+            <option value="7" aria-label="Seven">7</option>
+            <option value="8" aria-label="Eight">8</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-outline-primary">Make Reservation</button>
+    <a asp-action="Index" class="btn btn-outline-dark">Cancel</a>
+</form>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}

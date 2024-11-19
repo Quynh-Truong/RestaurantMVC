@@ -1,0 +1,31 @@
+﻿@model List<Dish>//what will be shown in the view
+
+
+
+    <div class="row">
+@foreach (var dish in Model)
+{
+        <div class="col-md-3">
+        <div class="card">
+            <img src="~/Images/@dish.ImageUrl" class="card-img-top" alt="@dish.Name">
+            <div class="card-body">
+                <h5 class="card-title">@dish.Name</h5>
+                <p class="card-text">@dish.Description</p>
+                <p class="card-text">@dish.Price SEK</p>
+
+                 
+           
+            </div>
+        </div>
+
+    </div>
+
+}
+
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }

@@ -1,0 +1,54 @@
+﻿@model Dish
+@* this data is sent to post Create *@
+
+
+<h1>Create New Dish</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Name">Dish Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Price</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Availability">Available</label>
+        <input asp-for="Availability" type="checkbox" class="form-check-input" />
+        <span asp-validation-for="Availability" class="text-danger"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="IsPopular">Popular</label>
+        <input asp-for="IsPopular" type="checkbox" class="form-check-input" />
+        <span asp-validation-for="IsPopular" class="text-danger"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageUrl">Image Url</label>
+        <input asp-for="ImageUrl" class="form-control" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+
+    </div>
+
+    <button type="submit" class="btn btn-outline-primary">Save</button>
+    <a asp-action="Index" class="btn btn-outline-dark">Cancel</a>
+</form>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}

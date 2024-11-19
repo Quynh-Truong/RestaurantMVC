@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\Images\hamburger640x427.jpg">
+      <Generator>C:\Users\Asus\OneDrive\Skrivbord\CHAS\RestaurantMVC\wwwroot\Images\hamburger640x427.jpgC:\Users\Asus\OneDrive\Skrivbord\CHAS\RestaurantMVC\wwwroot\Images\hamburger640x427.jpg</Generator>
+    </Content>
+  </ItemGroup>
+
+</Project>

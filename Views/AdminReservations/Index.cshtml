@@ -1,0 +1,58 @@
+﻿@model List<Reservation>
+@* show list of existing reservations in View *@
+
+
+<div class="create-btn">
+    <a asp-controller="AdminReservations" asp-action="Create" class="btn btn-outline-success btn-lg">Make a Table Reservation</a>
+</div>
+
+<h1>Reservations</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="table-success">Reservation ID</th>
+            <th class="table-secondary">First Name</th>
+            <th class="table-secondary">Last Name</th>
+            <th class="table-secondary">PhoneNo</th>
+            <th class="table-primary">Table ID</th>
+            <th class="table-primary">Reservation Time Start</th>
+            @*             <th class="table-primary">Reservation Time End</th>*@
+            <th class="table-primary">Number of People</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        @foreach (var reservation in Model)
+        {
+            <tr>
+                <td class="table-light">@reservation.ReservationId</td>
+                <td class="table-light">@reservation.FirstName</td>
+                <td class="table-light">@reservation.LastName</td>
+                <td class="table-light">@reservation.PhoneNo</td>
+                <td class="table-light">@reservation.TableId</td>
+                <td class="table-light">@reservation.ReservationStart</td>
+                @*                 <td class="table-light">@reservation.ReservationEnd</td> *@
+                <td class="table-light">@reservation.NoOfPeople</td>
+                <td class="table-light">
+                    <a asp-controller="AdminReservations" asp-action="Edit" asp-route-id=@reservation.ReservationId class="btn btn-outline-info">Edit</a>
+
+                    <form method="post" a asp-controller="AdminReservations" asp-action="Delete" style="display:inline;">
+
+                        <input type="hidden" name="id" value="@reservation.ReservationId" />
+                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Do you want to delete this reservation?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}

@@ -1,0 +1,15 @@
+﻿@model RestaurantMVC.Models.Admin
+
+<div class="admin-info">
+
+    @{
+        var uniqueName = User.FindFirst("unique_name").Value;
+        var email = @User.FindFirst("email").Value;
+        var role = User.FindFirst("role").Value;
+    }
+
+
+    <p>Welcome, @uniqueName. You are logged in as: @role.</p
+    <p>Email currently active: @email</p>
+
+</div> 
